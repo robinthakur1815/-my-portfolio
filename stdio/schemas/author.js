@@ -38,6 +38,15 @@ export default {
         },
       ],
     },
+    {
+      name: "description",
+      type:'string'
+    },
+
+    {
+      name: " long_description",
+      type:'string'
+    },
   ],
   preview: {
     select: {
