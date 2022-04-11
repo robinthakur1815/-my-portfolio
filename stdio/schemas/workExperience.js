@@ -4,9 +4,21 @@ export default {
     type:'document',
     fields:[
            {name:'name',
-               title:'name',
+               title:'profile',
                type:'string'
             },
+            {
+                name: "date",
+                type: "datetime",
+              },
+              {
+                name: "To_date",
+                type: "datetime",
+              },
+              {
+                name: "duration",
+                type: "string",
+              },
             {
                 name:'company',
                 title:'Company',

@@ -26,6 +26,17 @@ export default {
       },
     },
     {
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    },
+   
+    {
+      name: 'longdescription',
+      title: 'LongDescription',
+      type:'string'
+    },
+    {
       name: 'bio',
       title: 'Bio',
       type: 'array',
@@ -37,15 +48,6 @@ export default {
           lists: [],
         },
       ],
-    },
-    {
-      name: "description",
-      type:'string'
-    },
-
-    {
-      name: " long_description",
-      type:'string'
     },
   ],
   preview: {

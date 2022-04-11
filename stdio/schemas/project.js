@@ -35,7 +35,7 @@ export default {
           list: [
             { value: "personal", title: "Personal" },
             { value: "client", title: "Client" },
-            { value: "school", title: "School" },
+            { value: "Orgnizatation", title: "Orgnizatation" },
           ],
         },
       },
@@ -54,6 +54,18 @@ export default {
         options: {
           layout: "tags",
         },
+      },
+      {
+        name: 'tags2',
+        title: 'Tags2',
+       type:'array',
+       of: [
+         {
+           name:'tag2',
+           title:'Tag2',
+           type:'string'
+         }
+       ]
       },
     ],
   };
