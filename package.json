@@ -6,7 +6,7 @@
     "@craco/craco": "^6.0.0",
     "@headlessui/react": "^1.5.0",
     "@sanity/block-content-to-react": "^2.0.7",
-    "@sanity/client": "^2.1.0",
+    "@sanity/client": "^2.23.2",
     "@sanity/image-url": "^0.140.19",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@tailwindcss/typography": "^0.3.1",

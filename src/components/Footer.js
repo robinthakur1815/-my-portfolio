@@ -1,5 +1,6 @@
 
 import React from "react";
+import logo from '../assets/logo.png';
 
 export default function Footer() {
   return (
@@ -10,36 +11,26 @@ export default function Footer() {
   <div class="max-w-screen-xl mx-auto ">
     <div class="grid grid-cols-8 md:grid-cols-9  lg:grid-cols-8  divide-gray-200 divide-y-2 md:divide-x-2 md:divide-y-0 md:-mx-8">
       <div class="col-span-8 md:col-span-3 lg:col-span-2 md:px-8 py-4 md:py-0">
-        <h5 class="text-xl font-semibold text-gray-700">Company</h5>
+      <img 
+         href="/" src={logo} alt="logo" />
         <nav class="mt-4">
-          {/* <ul class="space-y-2">
-            <li>
-              <a href="#" class="font-normal text-base hover:text-gray-400">Landingpages</a>
-            </li>
-            <li>
-              <a href="#" class="font-normal text-base hover:text-gray-400">Features</a>
-            </li>
-            <li>
-              <a href="#" class="font-normal text-base hover:text-gray-400">Download brochure</a>
-            </li>
-          </ul> */}
         </nav>
       </div>
       <div class="col-span-8 md:col-span-3 lg:col-span-3 md:px-8 py-4 md:py-0">
-        <h5 class="text-xl font-semibold text-gray-700">Industries</h5>
+        <h5 class="text-xl font-semibold text-gray-700">Home</h5>
         <nav class="mt-4">
           <ul class="grid lg:grid-cols-2">
             <li class="mb-2">
-              <a href="#" class="font-normal text-base hover:text-gray-400">Employment</a>
+              <a href="#" class="font-normal text-base hover:text-gray-400">About</a>
             </li>
             <li class="mb-2">
-              <a href="#" class="font-normal text-base hover:text-gray-400">Company</a>
+              <a href="#" class="font-normal text-base hover:text-gray-400">Contact</a>
             </li>
             <li class="mb-2">
-              <a href="#" class="font-normal text-base hover:text-gray-400">Childcare</a>
+              <a href="#" class="font-normal text-base hover:text-gray-400">Blogs</a>
             </li>
             <li class="mb-2">
-              <a href="#" class="font-normal text-base hover:text-gray-400">Download brochure</a>
+              <a href="#" class="font-normal text-base hover:text-gray-400">Project</a>
             </li>
           </ul>
         </nav>
@@ -92,12 +83,6 @@ export default function Footer() {
         </nav>
       </div>
     </div>
-  </div>
-  <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 mt-8 lg:mt-12 border-t-2 border-gray-200 pt-8">
-    <nav class="flex flex-wrap justify-center space-x-6"> 
-      <a href="#" class="font-normal text-sm hover:text-gray-400 mb-2">Cookie settings</a>
-    </nav>
-    <p class="text-sm text-center md:text-right">&copy;2020 Company. All rights reserved. | All rights reserved</p>
   </div>
 </footer>
 )

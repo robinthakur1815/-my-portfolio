@@ -63,5 +63,6 @@ export default function Post() {
           </div>
         </section>
       </main>
+      
     );
   }

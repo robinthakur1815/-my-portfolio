@@ -20,6 +20,14 @@ export default {
         type: "text",
       },
       {
+        name: 'image',
+        title: 'Image',
+        type: 'image',
+        options: {
+          hotspot: true,
+        },
+      },
+      {
         name: "projectType",
         title: "Project type",
         type: "string",
