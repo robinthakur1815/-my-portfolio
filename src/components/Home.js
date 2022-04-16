@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import sanityClient from "../client.js";
 import imageUrlBuilder from "@sanity/image-url";
-import logo from '../assets/profile.png';
-import laravel from '../assets/vue.png';
+// import logo from '../assets/profile.png';
+// import laravel from '../assets/vue.png';
 // import vue from '../assets/vue.png';
 // import react from '../assets/react.png';
 import { Link } from 'react-router-dom';
@@ -97,13 +97,15 @@ export default function Home() {
     sanityClient
       .fetch(
         `*[_type == "project"]{
-          title,
-          date,
-          place,
-          description,
-          projectType,
-          link,
-          tags
+            "projectImage": image.asset->url,
+            title,
+            date,
+            place,
+            description,
+            projectType,
+            link,
+            tags,
+            tags2
       }`
       )
       .then((data) => setProjectData(data))
@@ -143,6 +145,12 @@ export default function Home() {
             {/* <p class="text-gray-400 mt-4">{author.bio}</p> */}
             <p class="text-gray-400 mt-4">{author.description}</p>
             <p class="text-gray-400 mt-4">{author.longdescription}</p>
+            <a class="flex items-center text-gray-600 hover:underline hover:text-gray-500" href="/about">
+                <span>View More</span>
+                <svg class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
           </div>
         </section>
 
@@ -217,21 +225,65 @@ export default function Home() {
           <div class="max-w-5xl px-6 mx-auto text-center">
             <h2 class="text-2xl font-semibold text-gray-800">Latest projects</h2>
 
-            <div class="flex flex-col items-center justify-center mt-6">
-              {projectData &&
-                projectData.map((project, index) => (
-                  <a class="max-w-2xl w-full block bg-white shadow-md rounded-md border-t-4 border-indigo-600 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110" href="#">
-                    <div class="flex items-center justify-between px-4 py-2">
-                      <h3 class="text-lg font-medium text-gray-700">{project.title}</h3>
-                      <span>
-                        {project.projectType}
-                      </span>
-                      <span class="block text-gray-600 font-light text-sm"> {new Date(project.date).toLocaleDateString()}</span>
-                    </div>
+            <div class="flex flex-wrap -m-4 bg-white-900">
+      {projectData &&
+            projectData.map((project, index) => (
+        <div class="p-4 md:w-1/3">
+          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+            <img class="lg:h-48 md:h-36 w-full object-cover object-center" 
+            src={urlFor(project.projectImage)} 
+            alt="blog"/>
+            <div class="p-6">
+              <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+              <strong className="font-bold text-gray-900">Type</strong>:{" "}
+                    {project.projectType}
+                    <span>
+                    || <strong className="font-bold text-gray-900" >place</strong>:{" "}
+                    {project.place}
+                  </span>
+              </h2>
+              <h1 class="title-font text-lg font-medium text-gray-900 mb-3"> 
+              <a
+                    href={project.link}
+                    alt={project.title}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {project.title}
                   </a>
-
-                ))}
+                  </h1>
+              <p class="leading-relaxed mb-3">
+              {project.description}
+              </p>
+              <div class="flex items-center flex-wrap ">
+                <a class="text-pink-500 inline-flex items-center md:mb-2 lg:mb-0">
+                <a
+                    href={project.link}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    className="block font-medium text-purple-600"
+                  >
+                    View More{" "}
+                    <span role="img" aria-label="right pointer">
+                      👉
+                    </span>
+                  </a>
+                </a>
+                <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                <strong className="font-bold text-gray-900">Date</strong>:{" "}
+                    {new Date(project.date).toLocaleDateString()}
+                </span>
+               
+              </div>
+              {/* <span class="font-bold text-gray-900">
+                {project. tags}
+                {project. tags2}
+                </span> */}
             </div>
+          </div>
+        </div>
+        ))}
+      </div>
 
             <div class="flex items-center justify-center mt-12">
               <a class="flex items-center text-gray-600 hover:underline hover:text-gray-500" href="/project">
@@ -246,127 +298,6 @@ export default function Home() {
 
         </section>
 
-       
-
-        <section class="text-gray-600 body-font">
-        <h2 class="text-center mb-20">Latest projects</h2>
-          <div class="container px-5 py-24 mx-auto">
-          <h2 class="text-2xl font-semibold text-gray-800">Latest projects</h2>
-            <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
-              <h2 class="text-2xl font-semibold text-gray-800">Latest projects</h2>
-              <div class="sm:w-32 sm:h-32 h-20 w-20 sm:mr-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 flex-shrink-0">
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="sm:w-16 sm:h-16 w-10 h-10" viewBox="0 0 24 24">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                </svg>
-              </div>
-              {experiences.map((experience) => (
-              <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                <h2 class="text-gray-900 text-lg title-font font-medium mb-2">{experience.profile}</h2>
-                <p class="leading-relaxed text-base">{experience.desc}.</p>
-                <a class="mt-3 text-indigo-500 inline-flex items-center">{experience.company}
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-               ))}
-            </div>
-            </div>
-        </section>
-
-        <section class="text-gray-600 body-font">
-          <div class="container px-5 py-24 mx-auto">
-            <div class="text-center mb-20">
-              <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">My skills</h1>
-              <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">basicaliy working as full stack devloper </p>
-            </div>
-            <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
-               {skills.map((skill) => (
-                  <div class="p-2 sm:w-1/2 w-full">
-                    <div class="bg-gray-100 rounded flex p-4 h-full items-center">
-                    <img class="text-gray-600 text-sm" src={urlFor(skill.icon)} alt={skill.name} />
-                      <span class="title-font font-medium">{skill.name}</span>
-                    </div>
-                  </div>
-                 ))}
-            </div>
-          </div>
-        </section>
-
-        <section class="text-gray-600 body-font">
-          <div class="container px-5 py-24 mx-auto flex flex-wrap">
-            <div class="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
-              <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-                <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-              </div>
-              <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">1</div>
-              <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                <div class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  </svg>
-                </div>
-                <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                  <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Shooting Stars</h2>
-                  <p class="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
-              <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-                <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-              </div>
-              <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">2</div>
-              <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                <div class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                  </svg>
-                </div>
-                <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                  <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">The Catalyzer</h2>
-                  <p class="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
-              <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-                <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-              </div>
-              <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">3</div>
-              <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                <div class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
-                    <circle cx="12" cy="5" r="3"></circle>
-                    <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
-                  </svg>
-                </div>
-                <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                  <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">The 400 Blows</h2>
-                  <p class="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
-              <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-                <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-              </div>
-              <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-500 text-white relative z-10 title-font font-medium text-sm">4</div>
-              <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-                <div class="flex-shrink-0 w-24 h-24 bg-indigo-100 text-indigo-500 rounded-full inline-flex items-center justify-center">
-                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-12 h-12" viewBox="0 0 24 24">
-                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
-                </div>
-                <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-                  <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">Neptune</h2>
-                  <p class="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
         <section class="bg-gray-800 pattern py-20">
           <div class="max-w-5xl px-6 mx-auto text-center">
             <h2 class="text-2xl font-semibold text-white">Latest BLog Posts</h2>

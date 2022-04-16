@@ -35,7 +35,7 @@ export default {
           list: [
             { value: "personal", title: "Personal" },
             { value: "client", title: "Client" },
-            { value: "Orgnizatation", title: "Orgnizatation" },
+            { value: "others", title: "others" },
           ],
         },
       },
