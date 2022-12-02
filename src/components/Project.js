@@ -45,7 +45,7 @@ export default function Project() {
       {projectData &&
             projectData.map((project, index) => (
         <div class="p-4 md:w-1/3">
-          <div class="bg-white h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+              <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
             <img class="lg:h-48 md:h-36 w-full object-cover object-center" 
             src={urlFor(project.projectImage)} 
             alt="blog"/>
@@ -86,7 +86,7 @@ export default function Project() {
                   </a>
                 </a>
                 <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                <strong className="font-bold text-gray-900">Date</strong>:{" "}
+                <strong className="font-bold text-gray-900">Date:{" "}</strong>
                     {new Date(project.date).toLocaleDateString()}
                 </span>
                

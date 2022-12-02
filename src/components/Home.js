@@ -111,7 +111,7 @@ export default function Home() {
       .then((data) => setProjectData(data))
       .catch(console.error);
   }, []);
-  
+
 
   if (!author) return <div>Loading...</div>;
   return (
@@ -146,18 +146,18 @@ export default function Home() {
             <p class="text-gray-400 mt-4">{author.description}</p>
             <p class="text-gray-400 mt-4">{author.longdescription}</p>
             <a class="flex items-center text-gray-600 hover:underline hover:text-gray-500" href="/about">
-                <span>View More</span>
-                <svg class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
+              <span>View More</span>
+              <svg class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
           </div>
         </section>
 
         <section class="text-gray-600 body-font">
           <div class="container px-5 py-24 mx-auto">
             <div class="text-center mb-20">
-              <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">Raw Denim Heirloom Man Braid</h1>
+              <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">What i do ..?</h1>
               <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine, ramps microdosing banh mi pug.</p>
               <div class="flex mt-6 justify-center">
                 <div class="w-16 h-1 rounded-full bg-pink-500 inline-flex"></div>
@@ -216,74 +216,74 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <button class="flex mx-auto mt-16 text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-lg">Button</button>
+            {/* <button class="flex mx-auto mt-16 text-white bg-pink-500 border-0 py-2 px-8 focus:outline-none hover:bg-pink-600 rounded text-lg">Button</button> */}
           </div>
         </section>
 
         <section class="bg-white py-20">
 
           <div class="max-w-5xl px-6 mx-auto text-center">
-            <h2 class="text-2xl font-semibold text-gray-800">Latest projects</h2>
+            <h2 class="text-4xl font-semibold text-gray-800">Latest projects</h2>
 
             <div class="flex flex-wrap -m-4 bg-white-900">
-      {projectData &&
-            projectData.map((project, index) => (
-        <div class="p-4 md:w-1/3">
-          <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-            <img class="lg:h-48 md:h-36 w-full object-cover object-center" 
-            src={urlFor(project.projectImage)} 
-            alt="blog"/>
-            <div class="p-6">
-              <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-              <strong className="font-bold text-gray-900">Type</strong>:{" "}
-                    {project.projectType}
-                    <span>
-                    || <strong className="font-bold text-gray-900" >place</strong>:{" "}
-                    {project.place}
-                  </span>
-              </h2>
-              <h1 class="title-font text-lg font-medium text-gray-900 mb-3"> 
-              <a
-                    href={project.link}
-                    alt={project.title}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {project.title}
-                  </a>
-                  </h1>
-              <p class="leading-relaxed mb-3">
-              {project.description}
-              </p>
-              <div class="flex items-center flex-wrap ">
-                <a class="text-pink-500 inline-flex items-center md:mb-2 lg:mb-0">
-                <a
-                    href={project.link}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    className="block font-medium text-purple-600"
-                  >
-                    View More{" "}
-                    <span role="img" aria-label="right pointer">
-                      👉
-                    </span>
-                  </a>
-                </a>
-                <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                <strong className="font-bold text-gray-900">Date</strong>:{" "}
-                    {new Date(project.date).toLocaleDateString()}
-                </span>
-               
-              </div>
-              {/* <span class="font-bold text-gray-900">
+              {projectData &&
+                projectData.map((project, index) => (
+                  <div class="p-4 md:w-1/3">
+                    <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+                      <img class="lg:h-48 md:h-36 w-full object-cover object-center"
+                        src={urlFor(project.projectImage)}
+                        alt="blog" />
+                      <div class="p-6">
+                        <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
+                          <strong className="font-bold text-gray-900">Type</strong>:{" "}
+                          {project.projectType}
+                          <span>
+                            || <strong className="font-bold text-gray-900" >place</strong>:{" "}
+                            {project.place}
+                          </span>
+                        </h2>
+                        <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+                          <a
+                            href={project.link}
+                            alt={project.title}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {project.title}
+                          </a>
+                        </h1>
+                        <p class="leading-relaxed mb-3">
+                          {project.description}
+                        </p>
+                        <div class="flex items-center flex-wrap ">
+                          <a class="text-pink-500 inline-flex items-center md:mb-2 lg:mb-0">
+                            <a
+                              href={project.link}
+                              rel="noopener noreferrer"
+                              target="_blank"
+                              className="block font-medium text-purple-600"
+                            >
+                              View More{" "}
+                              <span role="img" aria-label="right pointer">
+                                👉
+                              </span>
+                            </a>
+                          </a>
+                          <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                            <strong className="font-bold text-gray-900">Date</strong>:{" "}
+                            {new Date(project.date).toLocaleDateString()}
+                          </span>
+
+                        </div>
+                        {/* <span class="font-bold text-gray-900">
                 {project. tags}
                 {project. tags2}
                 </span> */}
+                      </div>
+                    </div>
+                  </div>
+                ))}
             </div>
-          </div>
-        </div>
-        ))}
-      </div>
 
             <div class="flex items-center justify-center mt-12">
               <a class="flex items-center text-gray-600 hover:underline hover:text-gray-500" href="/project">
