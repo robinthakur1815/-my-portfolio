@@ -73,6 +73,10 @@ export default function Project() {
               </p>
               <div class="flex items-center flex-wrap ">
                 <a class="text-pink-500 inline-flex items-center md:mb-2 lg:mb-0">
+                <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+                <strong className="font-bold text-gray-900">Date:{" "}</strong>
+                    {new Date(project.date).toLocaleDateString()}
+                </span>
                 <a
                     href={project.link}
                     rel="noopener noreferrer"
@@ -85,10 +89,7 @@ export default function Project() {
                     </span>
                   </a>
                 </a>
-                <span class="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                <strong className="font-bold text-gray-900">Date:{" "}</strong>
-                    {new Date(project.date).toLocaleDateString()}
-                </span>
+
                
               </div>
               <span class="font-bold text-gray-900">
